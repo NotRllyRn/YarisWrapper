@@ -1,0 +1,29 @@
+{
+  "name": "yaris-wrapper",
+  "version": "1.0.0",
+  "description": "a api wrapper for yaris",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NotRllyRn/YarisWrapper.git"
+  },
+  "keywords": [
+    "yaris",
+    "api",
+    "wrapper"
+  ],
+  "author": "NotRllyRn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NotRllyRn/YarisWrapper/issues"
+  },
+  "homepage": "https://github.com/NotRllyRn/YarisWrapper#readme",
+  "type": "module",
+  "dependencies": {
+    "node-fetch": "^3.2.3"
+  }
+}
