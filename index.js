@@ -34,43 +34,43 @@ module.exports = class Yaris {
 
         return fetch('https://api.yaris.rocks/v1/' + endpoint, req)
     }
-    addUser = (data) => {
+    addUser = async (data) => {
         return this.request('POST', 'adduser', data).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
     }
-    removeUser(hwid) {
+    removeUser = async (hwid) => {
         return this.request('POST', 'removeuser', { data: hwid }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
     }
-    getUser(tag) {
+    getUser = async (tag) => {
         return this.request('POST', `getuser/${tag}`, {}).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
     }
-    whitelistUser(hwid) {
+    whitelistUser = async (hwid) => {
         return this.request('POST', 'whitelistuser', { data: hwid }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
     }
-    blacklistUser(hwid) {
+    blacklistUser = async (hwid) => {
         return this.request('POST', 'blacklistuser', { data: hwid }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
     }
-    addKey(data = {}) {
+    addKey = async (data = {}) => {
         return this.request('POST', 'addkey', data).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
     }
-    removeKey(key) {
+    removeKey = async (key) => {
         return this.request('POST', 'removekey', { key: key }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
