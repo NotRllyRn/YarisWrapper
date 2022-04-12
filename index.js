@@ -7,7 +7,7 @@ export default class Yaris {
         this.request('POST', 'info', {}).then(res => res.json()).then(data => {
             if (data && data.information) {
                 this.#INFORMATION = data.information;
-            } else return new Error('[Yaris-Wrapper] new constructor error: ' + data.error.message);
+            } else throw new Error('[Yaris-Wrapper] new constructor error: ' + data.error.message);
         }).catch(err => console.error(err));
 
         return this
