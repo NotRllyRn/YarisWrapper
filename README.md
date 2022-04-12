@@ -1,6 +1,6 @@
 # Hello, this is a Yaris API wrapper for JS
 
-I did not make yaris. the yaris discord server is [here](https://discord.gg/yaris/). Please support them!
+I did not make yaris. the yaris discord server is [here](https://discord.gg/qVBtSYXX72). Please support them!
 
 to install:
 ```sh
