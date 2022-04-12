@@ -6,18 +6,19 @@ export default class Yaris {
 
         this.request('POST', 'info', {}).then(res => res.json()).then(data => {
             if (data && data.information) {
-                this.information = data.information;
+                this.#INFORMATION = data.information;
             } else return { success: false, error: data.error.message };
         }).catch(err => console.error(err));
 
         return this
     }
     #API_KEY = "";
+    #INFORMATION;
     getInfo() {
         return new Promise((resolve, _) => {
             setInterval(() => {
-                if (this.information) {
-                    resolve(this.information)
+                if (this.#INFORMATION) {
+                    resolve(this.#INFORMATION)
                 }
             }, 100)
         })

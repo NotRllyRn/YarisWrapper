@@ -22,13 +22,29 @@ const yaris = new Yaris("API_KEY")
 
 ## list of commands:
 
-- addUser
-- removeUser
-- getUser
-- whitelistUser
-- blacklistUser
-- addKey
-- removeKey
+> yaris.getInfo()
+> - gets whitelist information
+
+> yaris.addUser()
+> - adds a user to whitelist
+
+> yaris.removeUser()
+> - removes a user from whitelist
+
+> yaris.getUser()
+> - gets a users info
+
+> yaris.whitelistUser()
+> - whitelists a user
+
+> yaris.blacklistUser()
+> - blacklists a user
+
+> yaris.addKey()
+> - adds a key to your whitelist
+
+> yaris.removeKey()
+> - removes a key from your whitelist
 
 ## example script:
 
