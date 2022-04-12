@@ -1,6 +1,6 @@
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
-export default class Yaris {
+module.exports = class Yaris {
     constructor(API_KEY) {
         this.#API_KEY = API_KEY;
 

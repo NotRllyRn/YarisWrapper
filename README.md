@@ -7,10 +7,16 @@ to install:
 npm install yaris-wrapper
 ```
 
-to get started:
+to get started with ESM:
 ```js
 import Yaris from "yaris-wrapper";
 ```
+to get started with CommonJS:
+```js
+const Yaris = require("yaris-wrapper")
+```
+
+both work the same
 
 define a new connection:
 ```js
