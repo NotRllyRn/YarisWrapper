@@ -40,8 +40,8 @@ module.exports = class Yaris {
             else return { success: false, error: data.error.message };
         })
     }
-    removeUser(data) {
-        return this.request('POST', 'removeuser', data).then(res => res.json()).then(data => {
+    removeUser(hwid) {
+        return this.request('POST', 'removeuser', { data: hwid }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
