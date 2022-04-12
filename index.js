@@ -1,6 +1,6 @@
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
-module.exports = class Yaris {
+class Yaris {
     constructor(API_KEY) {
         this.#API_KEY = API_KEY;
 
@@ -14,14 +14,8 @@ module.exports = class Yaris {
     }
     #API_KEY = "";
     #INFORMATION;
-    getInfo() {
-        return new Promise((resolve, _) => {
-            setInterval(() => {
-                if (this.#INFORMATION) {
-                    resolve(this.#INFORMATION)
-                }
-            }, 100)
-        })
+    login = (API_KEY) => {
+        return new Yaris(API_KEY)
     }
     request = (method = 'GET', endpoint, data = {}) => {
         const req = {
@@ -33,6 +27,15 @@ module.exports = class Yaris {
         if (method == 'POST') req.body = JSON.stringify(data);
 
         return fetch('https://api.yaris.rocks/v1/' + endpoint, req)
+    }
+    getInfo() {
+        return new Promise((resolve, _) => {
+            setInterval(() => {
+                if (this.#INFORMATION) {
+                    resolve(this.#INFORMATION)
+                }
+            }, 100)
+        })
     }
     addUser = async (data) => {
         return this.request('POST', 'adduser', data).then(res => res.json()).then(data => {
@@ -77,3 +80,5 @@ module.exports = class Yaris {
         })
     }
 }
+
+module.exports = Yaris;

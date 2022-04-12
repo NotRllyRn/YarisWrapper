@@ -27,6 +27,10 @@ const Yaris = require("yaris-wrapper")
 ```js
 const yaris = new Yaris("API_KEY")
 ```
+### with a function instead of `new`, this also defines a new connection.
+```js
+const yaris = Yaris.login("API_KEY")
+```
 
 ---
 
@@ -36,9 +40,7 @@ when an api end point fails for some reason, maybe if you requested removeKey an
 ```js
 {
     success: false,
-    error: {
-        message: "error_message"
-    }
+    error: "error_message",
 }
 ```
 ### API.getInfo()
