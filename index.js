@@ -7,7 +7,7 @@ export default class Yaris {
         this.request('POST', 'info', {}).then(res => res.json()).then(data => {
             if (data && data.information) {
                 this.information = data.information;
-            } else return data.error.message;
+            } else return { success: false, error: data.error.message };
         }).catch(err => console.error(err));
 
         return this
@@ -27,43 +27,43 @@ export default class Yaris {
     addUser = (data) => {
         return this.request('POST', 'adduser', data).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
-            else return data.error.message;
+            else return { success: false, error: data.error.message };
         })
     }
     removeUser(data) {
         return this.request('POST', 'removeuser', data).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
-            else return data.error.message;
+            else return { success: false, error: data.error.message };
         })
     }
     getUser(tag) {
         return this.request('POST', `getuser/${tag}`, data).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
-            else return data.error.message;
+            else return { success: false, error: data.error.message };
         })
     }
-    whitelistUser(data) {
-        return this.request('POST', 'whitelistuser', data).then(res => res.json()).then(data => {
+    whitelistUser(hwid) {
+        return this.request('POST', 'whitelistuser', { data: hwid }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
-            else return data.error.message;
+            else return { success: false, error: data.error.message };
         })
     }
-    blacklistUser(data) {
-        return this.request('POST', 'blacklistuser', data).then(res => res.json()).then(data => {
+    blacklistUser(hwid) {
+        return this.request('POST', 'blacklistuser', { data: hwid }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
-            else return data.error.message;
+            else return { success: false, error: data.error.message };
         })
     }
     addKey(data = {}) {
         return this.request('POST', 'addkey', data).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
-            else return data.error.message;
+            else return { success: false, error: data.error.message };
         })
     }
-    removeKey(data) {
-        return this.request('POST', 'removekey', data).then(res => res.json()).then(data => {
+    removeKey(key) {
+        return this.request('POST', 'removekey', { key: key }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
-            else return data.error.message;
+            else return { success: false, error: data.error.message };
         })
     }
 }
