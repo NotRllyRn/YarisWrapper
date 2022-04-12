@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 export default class Yaris {
     constructor(API_KEY) {

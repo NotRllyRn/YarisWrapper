@@ -22,7 +22,6 @@
     "url": "https://github.com/NotRllyRn/YarisWrapper/issues"
   },
   "homepage": "https://github.com/NotRllyRn/YarisWrapper#readme",
-  "type": "module",
   "dependencies": {
     "node-fetch": "^3.2.3"
   }

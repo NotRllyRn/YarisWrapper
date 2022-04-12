@@ -11,9 +11,6 @@ to get started:
 ```js
 import Yaris from "yaris-wrapper";
 ```
-```js
-const Yaris = require("yaris-wrapper");
-```
 
 define a new connection:
 ```js
