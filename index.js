@@ -13,6 +13,15 @@ export default class Yaris {
         return this
     }
     #API_KEY = "";
+    getInfo() {
+        return new Promise((resolve, _) => {
+            setInterval(() => {
+                if (this.information) {
+                    resolve(this.information)
+                }
+            }, 100)
+        })
+    }
     request = (method = 'GET', endpoint, data = {}) => {
         const req = {
             method: method,
