@@ -47,7 +47,7 @@ export default class Yaris {
         })
     }
     getUser(tag) {
-        return this.request('POST', `getuser/${tag}`, data).then(res => res.json()).then(data => {
+        return this.request('POST', `getuser/${tag}`, {}).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
