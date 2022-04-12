@@ -143,7 +143,7 @@ info = { // successfully removed specified key
 ```js
 import Yaris from "yaris-wrapper";
 
-const yaris = Yaris.new("API_THING")
+const yaris = new Yaris("API_THING")
 
 yaris.getInfo().then(console.log) // gets information about your whitelist
 
@@ -189,7 +189,7 @@ yaris.getKey().then(data => { // adds a key
 ```js
 const Yaris = require("yaris-wrapper")
 
-const yaris = Yaris.new("API_THING")
+const yaris = new Yaris("API_THING")
 
 yaris.getInfo().then(console.log) // gets information about your whitelist
 
