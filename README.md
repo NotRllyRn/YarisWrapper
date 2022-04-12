@@ -32,7 +32,7 @@ const yaris = new Yaris("API_KEY")
 
 # List of commands w/ examples:
 ## Important!
-### when an api end point fails for some reason, maybe if you requested removeKey and provided a wrong key, it will always return the Object below, applies to all endpoints.
+when an api end point fails for some reason, maybe if you requested removeKey and provided a wrong key, it will always return the Object below, applies to all endpoints.
 ```js
 {
     success: false,
