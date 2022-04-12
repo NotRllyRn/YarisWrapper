@@ -1,32 +1,38 @@
 # Yaris API wrapper for Node.JS 
 
-I did make this, but i did not make Yaris, the Yaris discord server is [here](https://discord.gg/qVBtSYXX72). Please support them!
+### Information:
+This is a API wrapper for Yaris whitelisting system located [here](https://yaris.rocks/beta/). This is intended to help you use their API endpoint system without you hassling around with messy fetch code. Source code [here](https://github.com/NotRllyRn/YarisWrapper).
 
-to install:
+### Module compatablity:
+This works in both ESM and CommonJS scripts. This script is also asyncronous and does not have callbacks. You can either use the method `.then()` or `await`, which ever you prefer.
+
+### Disclamer!
+I did not make Yaris, this is simply an API wrapper for their service. The Yaris discord server is [here](https://discord.gg/qVBtSYXX72). Please support them!
+
+---
+
+### to install:
 ```sh
 npm install yaris-wrapper
 ```
-
-to get started with ESM:
+### to get started with ESM:
 ```js
 import Yaris from "yaris-wrapper";
 ```
-to get started with CommonJS:
+### to get started with CommonJS:
 ```js
 const Yaris = require("yaris-wrapper")
 ```
-
-to define a new connection:
+### to define a new connection:
 ```js
 const yaris = new Yaris("API_KEY")
 ```
 
 ---
 
-# list of commands w/ examples:
-
+# List of commands w/ examples:
 ## Important!
-### when an api end point fails for some reason, maybe if you did removeKey and provided a wrong key, it will always return this:
+### when an api end point fails for some reason, maybe if you requested removeKey and provided a wrong key, it will always return the Object below, applies to all endpoints.
 ```js
 {
     success: false,
@@ -35,7 +41,6 @@ const yaris = new Yaris("API_KEY")
     }
 }
 ```
-
 ### API.getInfo()
 * gets whitelist info
 ```js
@@ -136,22 +141,23 @@ info = { // successfully removed specified key
 ```
 
 ---
+
 # Example scripts
-
 ## example script with ESM:
-
+* uses `import` instead of `require()`
+* can be used asyncronously with `.then()` and `await`
 ```js
-import Yaris from "yaris-wrapper";
+import Yaris from "yaris-wrapper"; // ESM Modules only
 
-const yaris = new Yaris("API_THING")
+const yaris = new Yaris("API_KEY")
 
 yaris.getInfo().then(console.log) // gets information about your whitelist
 
 yaris.addUser({
-    tag: "ExampleTag",
-    data: "hwid",
+    tag: "user_tag",
+    data: "user_hwid",
     expires: "", // never expires if empty
-    role: "user"
+    role: "user_role" // can be anything
 }).then(data => {
     if (data && data.success) {
         console.log(data) // successfully whitelisted
@@ -171,7 +177,7 @@ yaris.getKey().then(data => { // adds a key
             }
         });
 
-        yaris.whitelistUser("hwid").then(data => { // whitelists a user with hwid
+        yaris.whitelistUser("user_hwid").then(data => { // whitelists a user with hwid
             if (data.success) {
                 console.log(data.message) // logs the success message
             } else {
@@ -184,21 +190,25 @@ yaris.getKey().then(data => { // adds a key
 })
 ```
 
+---
+
 ## example script with CommonJS:
-
+* uses `require()` instead of `import`
+* can be used asyncronously with `.then()` and `await`
 ```js
-const Yaris = require("yaris-wrapper")
+const Yaris = require("yaris-wrapper") // CommonJS only
 
-const yaris = new Yaris("API_THING")
-
-yaris.getInfo().then(console.log) // gets information about your whitelist
+const yaris = new Yaris("API_KEY")
 
 const main = async () => {
+    const info = await yaris.getInfo() // gets information about your whitelist
+    console.log(info)
+
     const addUserData = await yaris.addUser({
-        tag: "ExampleTag",
-        data: "hwid",
+        tag: "user_tag",
+        data: "user_hwid",
         expires: "", // never expires if empty
-        role: "user"
+        role: "user_role" // can be anything
     })
 
     if (addUserData && addUserData.success) {
@@ -220,7 +230,7 @@ const main = async () => {
             console.log(removeKeyData.message) // the success message
         }
 
-        const whitelistData = await yaris.whitelistUser("hwid")
+        const whitelistData = await yaris.whitelistUser("user_hwid")
 
         if (whitelistData.success) {
             console.log(whitelistData.message) // logs the success message
@@ -232,3 +242,7 @@ const main = async () => {
     }
 }
 ```
+
+Thank you for using yaris-wrapper <3
+- 
+from [NotRllyRn](https://github.com/NotRllyRn)
