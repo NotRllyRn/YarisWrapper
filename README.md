@@ -49,10 +49,10 @@ when an api end point fails for some reason, maybe if you requested removeKey an
 var info = await yaris.getInfo()
 
 info = {
-    id: "whitelist_id",
-    owner: "user_id",
-    name: "whitelist_name",
-    description: "whitelist_description"
+    id: "whitelist_id", // whitelist's id
+    owner: "user_id", // owner of whitelist's id
+    name: "whitelist_name", // the whitelist name
+    description: "whitelist_description" // the whitelist dicription
 }
 ```
 ### API.addUser()
