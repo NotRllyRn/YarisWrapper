@@ -25,56 +25,80 @@ class Yaris {
 
         return fetch('https://api.yaris.rocks/v1/' + endpoint, req)
     }
-    getInfo() {
-        return new Promise((resolve, _) => {
+    getInfo(callback) {
+        const info =  new Promise((resolve, _) => {
             setInterval(() => {
                 if (this.#INFORMATION) {
                     resolve(this.#INFORMATION)
                 }
             }, 100)
         })
+        if (callback) {
+            info.then(data => callback(data)).catch(err => console.error(err))
+        } else return info;
     }
-    addUser = async (data) => {
-        return this.request('POST', 'adduser', data).then(res => res.json()).then(data => {
+    addUser = async (data, callback) => {
+        const info = this.request('POST', 'adduser', data).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
+        if (callback) {
+            info.then(data => callback(data)).catch(err => console.error(err))
+        } else return info;
     }
-    removeUser = async (data) => {
-        return this.request('POST', 'removeuser', data).then(res => res.json()).then(data => {
+    removeUser = async (data, callback) => {
+        const info = this.request('POST', 'removeuser', data).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
+        if (callback) {
+            info.then(data => callback(data)).catch(err => console.error(err))
+        } else return info;
     }
-    getUser = async (tag) => {
-        return this.request('POST', `getuser/${tag}`, {}).then(res => res.json()).then(data => {
+    getUser = async (tag, callback) => {
+        const info = this.request('POST', `getuser/${tag}`, {}).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
+        if (callback) {
+            info.then(data => callback(data)).catch(err => console.error(err))
+        } else return info;
     }
-    whitelistUser = async (hwid) => {
-        return this.request('POST', 'whitelistuser', { data: hwid }).then(res => res.json()).then(data => {
+    whitelistUser = async (hwid, callback) => {
+        const info = this.request('POST', 'whitelistuser', { data: hwid }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
+        if (callback) {
+            info.then(data => callback(data)).catch(err => console.error(err))
+        } else return info;
     }
-    blacklistUser = async (hwid, reason) => {
-        return this.request('POST', 'blacklistuser', { data: hwid, reason: reason }).then(res => res.json()).then(data => {
+    blacklistUser = async (hwid, reason, callback) => {
+        const info = this.request('POST', 'blacklistuser', { data: hwid, reason: reason }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
+        if (callback) {
+            info.then(data => callback(data)).catch(err => console.error(err))
+        } else return info;
     }
-    addKey = async (data = {}) => {
-        return this.request('POST', 'addkey', data).then(res => res.json()).then(data => {
+    addKey = async (data = {}, callback) => {
+        const info = this.request('POST', 'addkey', data).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
+        if (callback) {
+            info.then(data => callback(data)).catch(err => console.error(err))
+        } else return info;
     }
-    removeKey = async (key) => {
-        return this.request('POST', 'removekey', { key: key }).then(res => res.json()).then(data => {
+    removeKey = async (key, callback) => {
+        const info = this.request('POST', 'removekey', { key: key }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
+        if (callback) {
+            info.then(data => callback(data)).catch(err => console.error(err))
+        } else return info;
     }
 }
 

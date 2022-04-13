@@ -59,6 +59,21 @@ when an api end point fails for some reason, maybe if you requested removeKey an
     error: "error_message",
 }
 ```
+## Callbacks!
+instead of using promises, you could actually use callbacks, each function has a callback for the last argument,
+```js
+yaris.getInfo((info) => { // add a callback for the 1st argument, since it doesn't take in any other arguments
+    console.log(info)
+})
+
+yaris.blacklistUser("user_tag", "reason", (info) => { // callback on the last argument.
+    if (info.success) {
+        console.log(info) // successfully blacklisted
+    } else {
+        console.log(info.error) // failed to blacklist
+    }
+})
+```
 ### API.getInfo()
 * gets whitelist info
 ```js
