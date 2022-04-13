@@ -73,7 +73,10 @@ info = { // adds user successfully
 ### API.removeUser()
 * removes a user from whitelist using their hwid
 ```js
-var info = await yaris.removeUser("user_hwid")
+var info = await yaris.removeUser({
+    tag: "user_tag", // uses user's tag
+    data: "user_hwid", // or uses user's hwid
+})
 
 info = { // removes user successfully
     success: true,
@@ -109,9 +112,9 @@ info = { // successfully whitelised
 }
 ```
 ### API.blacklistUser()
-* blacklists a user using their user id
+* blacklists a user using their user id w/ a reason (optional)
 ```js
-var info = await yaris.blacklistUser("user_hwid")
+var info = await yaris.blacklistUser("user_hwid", "blacklist_reason") // blacklist reason is optional
 
 info = { // successfully blacklisted
     success: true,

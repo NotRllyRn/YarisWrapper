@@ -1,4 +1,4 @@
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 class Yaris {
     constructor(API_KEY) {
@@ -14,9 +14,6 @@ class Yaris {
     }
     #API_KEY = "";
     #INFORMATION;
-    login = (API_KEY) => {
-        return new Yaris(API_KEY)
-    }
     request = (method = 'GET', endpoint, data = {}) => {
         const req = {
             method: method,
@@ -43,8 +40,8 @@ class Yaris {
             else return { success: false, error: data.error.message };
         })
     }
-    removeUser = async (hwid) => {
-        return this.request('POST', 'removeuser', { data: hwid }).then(res => res.json()).then(data => {
+    removeUser = async (data) => {
+        return this.request('POST', 'removeuser', data).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
@@ -61,8 +58,8 @@ class Yaris {
             else return { success: false, error: data.error.message };
         })
     }
-    blacklistUser = async (hwid) => {
-        return this.request('POST', 'blacklistuser', { data: hwid }).then(res => res.json()).then(data => {
+    blacklistUser = async (hwid, reason) => {
+        return this.request('POST', 'blacklistuser', { data: hwid, reason: reason }).then(res => res.json()).then(data => {
             if (data && data.information) return data.information;
             else return { success: false, error: data.error.message };
         })
@@ -80,5 +77,7 @@ class Yaris {
         })
     }
 }
+
+Yaris.login = (API_KEY) => new Yaris(API_KEY);
 
 module.exports = Yaris;
