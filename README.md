@@ -23,7 +23,7 @@ I did not make Yaris, this is simply an API wrapper for their service. The Yaris
     - [addKey](#apiaddkey)
     - [removeKey](#apiremovekey)
 - [Usage](#example-usage)
-    - [promises / ES6](#example-usage-with-ES6)
+    - [promises / ES6](#example-usage-with-es6)
     - [async await / CommonJS](#example-usage-with-commonjs)
 ---
 
