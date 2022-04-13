@@ -1,4 +1,4 @@
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 class Yaris {
     constructor(API_KEY) {
@@ -81,3 +81,4 @@ class Yaris {
 Yaris.login = (API_KEY) => new Yaris(API_KEY);
 
 module.exports = Yaris;
+exports = module.exports;

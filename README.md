@@ -4,31 +4,47 @@
 This is a API wrapper for Yaris whitelisting system located [here](https://yaris.rocks/beta/). This is intended to help you use their API endpoint system without you hassling around with messy fetch code. Source code [here](https://github.com/NotRllyRn/YarisWrapper).
 
 ### Module compatablity:
-This works in both ESM and CommonJS scripts. This script is also asyncronous and does not have callbacks. You can either use the method `.then()` or `await`, which ever you prefer.
+This works in both ES6 and CommonJS scripts. This script is also asyncronous and does not have callbacks. You can either use the method `.then()` or `await`, which ever you prefer.
 
 ### Disclamer!
 I did not make Yaris, this is simply an API wrapper for their service. The Yaris discord server is [here](https://discord.gg/qVBtSYXX72). Please support them!
 
+---
+## Table of contents:
+- [To install and setup](#to-install)
+- [To get started](#to-get-started)
+- [List of commands](#list-of-commands-w-examples)
+    - [getInfo](#apigetinfo)
+    - [addUser](#apiaddkey)
+    - [removeUser](#apiremoveuser)
+    - [getUser](#apigetuser)
+    - [whitelistUser](#apiwhitelistuser)
+    - [blacklistUser](#apiblacklistuser)
+    - [addKey](#apiaddkey)
+    - [removeKey](#apiremovekey)
+- [Usage](#example-usage)
+    - [promises / ES6](#example-usage-with-ES6)
+    - [async await / CommonJS](#example-usage-with-commonjs)
 ---
 
 ### to install:
 ```sh
 npm install yaris-wrapper
 ```
-### to get started with ESM:
+### to get started:
 ```js
+// With ES6 modules
 import Yaris from "yaris-wrapper";
-```
-### to get started with CommonJS:
-```js
+
+// With CommonJS
 const Yaris = require("yaris-wrapper")
 ```
 ### to define a new connection:
 ```js
+// Using Classes
 const yaris = new Yaris("API_KEY")
-```
-### with a function instead of `new`, this also defines a new connection.
-```js
+
+// Using login function
 const yaris = Yaris.login("API_KEY")
 ```
 
@@ -147,12 +163,12 @@ info = { // successfully removed specified key
 
 ---
 
-# Example scripts
-## example script with ESM:
+# Example Usage
+## example usage with ES6:
 * uses `import` instead of `require()`
 * can be used asyncronously with `.then()` and `await`
 ```js
-import Yaris from "yaris-wrapper"; // ESM Modules only
+import Yaris from "yaris-wrapper"; // ES6 Modules only
 
 const yaris = new Yaris("API_KEY")
 
@@ -197,7 +213,7 @@ yaris.getKey().then(data => { // adds a key
 
 ---
 
-## example script with CommonJS:
+## example usage with CommonJS:
 * uses `require()` instead of `import`
 * can be used asyncronously with `.then()` and `await`
 ```js
