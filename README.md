@@ -15,7 +15,7 @@ I did not make Yaris, this is simply an API wrapper for their service. The Yaris
 - [To get started](#to-get-started)
 - [List of commands](#list-of-commands-w-examples)
     - [getInfo](#apigetinfo)
-    - [addUser](#apiaddkey)
+    - [addUser](#apiadduser)
     - [removeUser](#apiremoveuser)
     - [getUser](#apigetuser)
     - [whitelistUser](#apiwhitelistuser)
