@@ -4,7 +4,7 @@
 This is a API wrapper for Yaris whitelisting system located [here](https://yaris.rocks/beta/). This is intended to help you use their API endpoint system without you hassling around with messy fetch code. Source code [here](https://github.com/NotRllyRn/YarisWrapper).
 
 ### Module compatablity:
-This works in both ES6 and CommonJS scripts. This script is also asyncronous and does not have callbacks. You can either use the method `.then()` or `await`, which ever you prefer.
+This works in both ES6 Modules and CommonJS scripts. This module is asyncronous but has [callback support](#callbacks). You can either use the method `.then()` or `await`, which ever you prefer.
 
 ### Disclamer!
 I did not make Yaris, this is simply an API wrapper for their service. The Yaris discord server is [here](https://discord.gg/qVBtSYXX72). Please support them!
