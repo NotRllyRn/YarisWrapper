@@ -77,7 +77,7 @@ yaris.blacklistUser("user_tag", "reason", (info) => { // callback on the last ar
 ### API.getInfo()
 * gets whitelist info
 ```js
-var info = await yaris.getInfo()
+var info = await yaris.getInfo(optional_callback)
 
 info = {
     id: "whitelist_id", // whitelist's id
@@ -94,7 +94,7 @@ var info = await yaris.addUser({
     data: "user_hwid",
     expires: "", // set to never expire
     role: "user_role", // could be anything
-})
+}, optional_callback)
 
 info = { // adds user successfully
     success: true,
@@ -107,7 +107,7 @@ info = { // adds user successfully
 var info = await yaris.removeUser({
     tag: "user_tag", // uses user's tag
     data: "user_hwid", // or uses user's hwid
-})
+}, optional_callback)
 
 info = { // removes user successfully
     success: true,
@@ -117,7 +117,7 @@ info = { // removes user successfully
 ### API.getUser()
 * gets a users info w/ their tag
 ```js
-var info = await yaris.getUser("user_tag")
+var info = await yaris.getUser("user_tag", optional_callback)
 
 info = { // successfully retrieved info
     success: true,
@@ -135,7 +135,7 @@ info = { // successfully retrieved info
 ### API.whitelistUser()
 * whitelists a user using their user id
 ```js
-var info = await yaris.whitelistUser("user_hwid")
+var info = await yaris.whitelistUser("user_hwid", optional_callback)
 
 info = { // successfully whitelised
     success: true,
@@ -145,7 +145,7 @@ info = { // successfully whitelised
 ### API.blacklistUser()
 * blacklists a user using their user id w/ a reason (optional)
 ```js
-var info = await yaris.blacklistUser("user_hwid", "blacklist_reason") // blacklist reason is optional
+var info = await yaris.blacklistUser("user_hwid", "blacklist_reason", optional_callback) // blacklist reason is optional
 
 info = { // successfully blacklisted
     success: true,
@@ -155,7 +155,7 @@ info = { // successfully blacklisted
 ### API.addKey()
 * generates a key for your whitelist
 ```js
-var info = await yaris.addKey()
+var info = await yaris.addKey(optional_callback)
 
 info = { // successfully generated a key
     success: true,
@@ -168,7 +168,7 @@ info = { // successfully generated a key
 ### API.removeKey()
 * generates a key for your whitelist
 ```js
-var info = await yaris.removeKey("key")
+var info = await yaris.removeKey("key", optional_callback)
 
 info = { // successfully removed specified key
     success: true,
