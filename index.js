@@ -32,11 +32,12 @@ class Yaris {
     }
     getInfo(callback) {
         const info =  new Promise((resolve, _) => {
-            setInterval(() => {
+            const interval = setInterval(() => {
                 if (this.#INFORMATION) {
+                    clearInterval(interval)
                     resolve(this.#INFORMATION)
                 }
-            }, 1)
+            }, 10)
         })
         if (callback) {
             info.then(data => callback(data)).catch(err => console.error(err))
@@ -55,7 +56,7 @@ class Yaris {
         } else return info;
     }
     getUser = async (tag, callback) => {
-        const info = this.#request('POST', `getuser/${tag}`, {})
+        const info = this.#request('POST', `getuser/${tag}`)
         if (callback) {
             info.then(data => callback(data)).catch(err => console.error(err))
         } else return info;
@@ -73,7 +74,7 @@ class Yaris {
         } else return info;
     }
     addKey = async (callback) => {
-        const info = this.#request('POST', 'addkey', {})
+        const info = this.#request('POST', 'addkey')
         if (callback) {
             console.log(callback)
             info.then(data => callback(data)).catch(err => console.error(err))
