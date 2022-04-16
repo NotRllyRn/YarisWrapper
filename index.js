@@ -26,7 +26,7 @@ class Yaris {
         return new Promise(resolve => {
             fetch('https://api.yaris.rocks/v1/' + endpoint, req).then(res => res.json()).then(data => {
                 if (data.success || data.information) resolve(data.information);
-                else resolve({ success: false, error: data.error.message });
+                else resolve({ success: false, error: data.error });
             }) 
         })
     }
@@ -56,19 +56,25 @@ class Yaris {
         } else return info;
     }
     getUser = async (tag, callback) => {
-        const info = this.#request('POST', `getuser/${tag}`)
+        const info = this.#request('POST', 'getuser', { tag: tag })
         if (callback) {
             info.then(data => callback(data)).catch(err => console.error(err))
         } else return info;
     }
-    whitelistUser = async (hwid, callback) => {
-        const info = this.#request('POST', 'whitelistuser', { data: hwid })
+    editUser = async (data, callback) => {
+        const info = this.#request('POST', 'edituser', data)
         if (callback) {
             info.then(data => callback(data)).catch(err => console.error(err))
         } else return info;
     }
-    blacklistUser = async (hwid, reason, callback) => {
-        const info = this.#request('POST', 'blacklistuser', { data: hwid, reason: reason })
+    whitelistUser = async (data, callback) => {
+        const info = this.#request('POST', 'whitelistuser', data)
+        if (callback) {
+            info.then(data => callback(data)).catch(err => console.error(err))
+        } else return info;
+    }
+    blacklistUser = async (data, callback) => {
+        const info = this.#request('POST', 'blacklistuser', data)
         if (callback) {
             info.then(data => callback(data)).catch(err => console.error(err))
         } else return info;

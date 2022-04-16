@@ -18,6 +18,7 @@ I did not make Yaris, this is simply an API wrapper for their service. The Yaris
     - [addUser](#apiadduser)
     - [removeUser](#apiremoveuser)
     - [getUser](#apigetuser)
+    - [editUser](#apiedituser)
     - [whitelistUser](#apiwhitelistuser)
     - [blacklistUser](#apiblacklistuser)
     - [addKey](#apiaddkey)
@@ -56,7 +57,10 @@ when an api end point fails for some reason, maybe if you requested removeKey an
 ```js
 {
     success: false,
-    error: "error_message",
+    error: {
+        message: "error_message",
+        code: "error_code"
+    },
 }
 ```
 ## Callbacks!
@@ -70,7 +74,7 @@ yaris.blacklistUser("user_tag", "reason", (info) => { // callback on the last ar
     if (info.success) {
         console.log(info) // successfully blacklisted
     } else {
-        console.log(info.error) // failed to blacklist
+        console.error(info.error.message) // failed to blacklist
     }
 })
 ```
@@ -107,6 +111,7 @@ info = { // adds user successfully
 var info = await yaris.removeUser({
     tag: "user_tag", // uses user's tag
     data: "user_hwid", // or uses user's hwid
+    hashed: false, // [OPTIONAL] change this accordingly to the data field.
 }, optional_callback)
 
 info = { // removes user successfully
@@ -124,7 +129,7 @@ info = { // successfully retrieved info
     message: "yes",
     additional: {
         tag: "user_tag",
-        data: "user_hased_hwid",
+        data: "user_hashed_hwid",
         expires: "", // sets to never expire
         role: "user_role",
         blacklisted: "false", // if they are blacklisted or whitelisted
@@ -132,10 +137,29 @@ info = { // successfully retrieved info
     }
 }
 ```
+### API.editUser()
+* edits a users data using their hwid
+```js
+var info = await. yaris.editUser({
+    data: "user_hwid", // unhashed or hashed
+    hashed: false, // [OPTIONAL] change this accordingling to the data field.
+    tag: "new_user_tag",   // [OPTIONAL]
+    expires: "",           // [OPTIONAL]
+    role: "new_user_role", // [OPTIONAL]
+}, optional_callback)
+
+info = { // successfully edited user.
+    success: true,
+    message: 'Successfully changed that users tag.'
+}
+```
 ### API.whitelistUser()
 * whitelists a user using their user id
 ```js
-var info = await yaris.whitelistUser("user_hwid", optional_callback)
+var info = await yaris.whitelistUser({
+    data: "user_hwid", // hashed or unhashed
+    hashed: false, // [OPTIONAL] change this accordingling to the data field.
+}, optional_callback)
 
 info = { // successfully whitelised
     success: true,
@@ -145,7 +169,11 @@ info = { // successfully whitelised
 ### API.blacklistUser()
 * blacklists a user using their user id w/ a reason (optional)
 ```js
-var info = await yaris.blacklistUser("user_hwid", "blacklist_reason", optional_callback) // blacklist reason is optional
+var info = await yaris.blacklistUser(({
+    data: "user_hwid", // hashed or unhashed
+    reason: "", // [OPTIONAL]
+    hashed: false, // [OPTIONAL] change this accordingling to the data field.
+}, optional_callback)
 
 info = { // successfully blacklisted
     success: true,
@@ -213,7 +241,9 @@ yaris.getKey().then(data => { // adds a key
             }
         });
 
-        yaris.whitelistUser("user_hwid").then(data => { // whitelists a user with hwid
+        yaris.whitelistUser({
+            data: "user_hwid",
+        }).then(data => { // whitelists a user with hwid
             if (data.success) {
                 console.log(data.message) // logs the success message
             } else {
@@ -266,7 +296,9 @@ const main = async () => {
             console.log(removeKeyData.message) // the success message
         }
 
-        const whitelistData = await yaris.whitelistUser("user_hwid")
+        const whitelistData = await yaris.whitelistUser({
+            data: "user_hwid",
+        })
 
         if (whitelistData.success) {
             console.log(whitelistData.message) // logs the success message
