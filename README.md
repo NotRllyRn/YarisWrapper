@@ -91,11 +91,11 @@ info = {
 }
 ```
 ### API.addUser()
-* adds a user to whitelist using hwid
+* adds a user to whitelist using some sort of data (usually hwid)
 ```js
 var info = await yaris.addUser({
     tag: "user_tag",
-    data: "user_hwid",
+    data: "user_data",
     expires: "", // set to never expire
     role: "user_role", // could be anything
 }, optional_callback)
@@ -106,11 +106,11 @@ info = { // adds user successfully
 }
 ```
 ### API.removeUser()
-* removes a user from whitelist using their hwid
+* removes a user from whitelist using some sort of data (usually hwid)
 ```js
 var info = await yaris.removeUser({
     tag: "user_tag", // uses user's tag
-    data: "user_hwid", // or uses user's hwid
+    data: "user_data", // or uses user's hwid
     hashed: false, // [OPTIONAL] change this accordingly to the data field.
 }, optional_callback)
 
@@ -138,10 +138,10 @@ info = { // successfully retrieved info
 }
 ```
 ### API.editUser()
-* edits a users data using their hwid
+* edits a users data using some sort of data (usually hwid)
 ```js
 var info = await. yaris.editUser({
-    data: "user_hwid", // unhashed or hashed
+    data: "user_data", // unhashed or hashed
     hashed: false, // [OPTIONAL] change this accordingling to the data field.
     tag: "new_user_tag",   // [OPTIONAL]
     expires: "",           // [OPTIONAL]
@@ -157,7 +157,7 @@ info = { // successfully edited user.
 * whitelists a user using their user id
 ```js
 var info = await yaris.whitelistUser({
-    data: "user_hwid", // hashed or unhashed
+    data: "user_data", // hashed or unhashed
     hashed: false, // [OPTIONAL] change this accordingling to the data field.
 }, optional_callback)
 
@@ -170,7 +170,7 @@ info = { // successfully whitelised
 * blacklists a user using their user id w/ a reason (optional)
 ```js
 var info = await yaris.blacklistUser(({
-    data: "user_hwid", // hashed or unhashed
+    data: "user_data", // hashed or unhashed
     reason: "", // [OPTIONAL]
     hashed: false, // [OPTIONAL] change this accordingling to the data field.
 }, optional_callback)
@@ -219,7 +219,7 @@ yaris.getInfo().then(console.log) // gets information about your whitelist
 
 yaris.addUser({
     tag: "user_tag",
-    data: "user_hwid",
+    data: "user_data",
     expires: "", // never expires if empty
     role: "user_role" // can be anything
 }).then(data => {
@@ -242,8 +242,8 @@ yaris.getKey().then(data => { // adds a key
         });
 
         yaris.whitelistUser({
-            data: "user_hwid",
-        }).then(data => { // whitelists a user with hwid
+            data: "user_data",
+        }).then(data => { // whitelists a user with user data (usually hwid)
             if (data.success) {
                 console.log(data.message) // logs the success message
             } else {
@@ -272,7 +272,7 @@ const main = async () => {
 
     const addUserData = await yaris.addUser({
         tag: "user_tag",
-        data: "user_hwid",
+        data: "user_data",
         expires: "", // never expires if empty
         role: "user_role" // can be anything
     })
@@ -297,7 +297,7 @@ const main = async () => {
         }
 
         const whitelistData = await yaris.whitelistUser({
-            data: "user_hwid",
+            data: "user_data",
         })
 
         if (whitelistData.success) {
