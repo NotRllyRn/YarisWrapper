@@ -1,5 +1,7 @@
 # Yaris API wrapper for Node.JS 
 
+If you're looking for a Luau (exploiting) version of this, go [here](https://github.com/NotRllyRn/YarisWrapperLUA).
+
 ### Information:
 This is a API wrapper for Yaris whitelisting system located [here](https://yaris.rocks/beta/). This is intended to help you use their API endpoint system without you hassling around with messy fetch code. Source code [here](https://github.com/NotRllyRn/YarisWrapper).
 
@@ -13,6 +15,8 @@ I did not make Yaris, this is simply an API wrapper for their service. The Yaris
 ## Table of contents:
 - [To install and setup](#to-install)
 - [To get started](#to-get-started)
+    - [Error handling](#important-error-handling)
+    - [Using callbacks](#callbacks)
 - [List of commands](#list-of-commands-w-examples)
     - [getInfo](#apigetinfo)
     - [addUser](#apiadduser)
@@ -52,7 +56,7 @@ const yaris = Yaris.login("API_KEY")
 ---
 
 # List of commands w/ examples:
-## Important!
+## Important! Error Handling.
 when an api end point fails for some reason, maybe if you requested removeKey and provided a wrong key, it will always return the Object below, applies to all endpoints.
 ```js
 {
@@ -141,8 +145,8 @@ info = { // successfully retrieved info
 * edits a users data using some sort of data (usually hwid)
 ```js
 var info = await. yaris.editUser({
-    data: "user_data", // unhashed or hashed
-    hashed: false, // [OPTIONAL] change this accordingling to the data field.
+    data: "user_data",     // unhashed or hashed
+    hashed: false,         // [OPTIONAL] change this accordingling to the data field.
     tag: "new_user_tag",   // [OPTIONAL]
     expires: "",           // [OPTIONAL]
     role: "new_user_role", // [OPTIONAL]

@@ -6,7 +6,7 @@ class Yaris {
 
         this.#request('POST', 'info', {}).then(data => {
             if (!data.error) {
-                this.#INFORMATION = data.information;
+                this.#INFORMATION = data;
             } else throw new Error('[Yaris-Wrapper] new constructor error: ' + data.error);
         }).catch(err => { throw err });
 
